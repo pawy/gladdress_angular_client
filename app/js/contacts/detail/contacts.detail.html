@@ -6,27 +6,78 @@
         </div>
         <div class="media-body">
             <h1 class="media-heading">{{contact.Profile.FormattedName}}</h1>
-            <p>{{contact.Profile.Company}}</p>
+            <p>{{contact.Profile.JobTitle}}</p>
         </div>
     </div>
 </div>
 
-<dl class="dl-horizontal">
-	<div ng-if="contact.Profile.Email">
-		<dt>Email</dt>
-		<dd>{{contact.Profile.Email}}</dd>
-	</div>
+<div class="row">
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <div ng-if="contact.Profile.Email">
+                <dt><i class="fa fa-envelope"></i></dt>
+                <dd>{{contact.Profile.Email}}</dd>
+            </div>
 
-	<div ng-if="contact.Profile.phone">
-		<dt>Phone</dt>
-		<dd>{{contact.Profile.phone}}</dd>
-	</div>
+            <div ng-if="contact.Profile.Mobile">
+                <dt><i class="fa fa-mobile"></i></dt>
+                <dd>{{contact.Profile.Mobile}}</dd>
+            </div>
 
-	<div ng-if="contact.Profile.FormattedAddress">
-		<dt>Address</dt>
-		<dd class="with-linebreaks">{{contact.Profile.FormattedAddress}}</dd>
-	</div>
-</dl>
+            <div ng-if="contact.Profile.Phone">
+                <dt><i class="fa fa-phone"></i></dt>
+                <dd>{{contact.Profile.Phone}}</dd>
+            </div>
+            <br />
+            <div ng-if="contact.Profile.CompanyName">
+                <dd class="with-linebreaks">{{contact.Profile.CompanyName}}</dd>
+            </div>
+
+            <div ng-if="contact.Profile.FormattedAddress">
+                <dd class="with-linebreaks">{{contact.Profile.FormattedAddress}}</dd>
+            </div>
+        </dl>
+    </div>
+
+
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <div ng-if="contact.Profile.Url">
+                <dt><i class="fa fa-globe"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Url}}</dd>
+            </div>
+            <div ng-if="contact.Profile.BirthDate">
+                <dt><i class="fa fa-gift"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.BirthDate}}</dd>
+            </div>
+
+            <div ng-if="contact.Profile.Fax">
+                <dt><i class="fa fa-fax"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Fax}}</dd>
+            </div>
+            <div ng-if="contact.Profile.Facebook">
+                <dt><i class="fa fa-facebook"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Facebook}}</dd>
+            </div>
+            <div ng-if="contact.Profile.Twitter">
+                <dt><i class="fa fa-twitter"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Twitter}}</dd>
+            </div>
+            <div ng-if="contact.Profile.Google">
+                <dt><i class="fa fa-google"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Google}}</dd>
+            </div>
+            <div ng-if="contact.Profile.Skype">
+                <dt><i class="fa fa-skype"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Skype}}</dd>
+            </div>
+            <div ng-if="contact.Profile.Yahoo">
+                <dt><i class="fa fa-yahoo"></i></dt>
+                <dd class="with-linebreaks">{{contact.Profile.Yahoo}}</dd>
+            </div>
+        </dl>
+    </div>
+</div>
 
 <div class="well" ng-if="contact.note"><p class="with-linebreaks">{{contact.note}}</p></div>
 
