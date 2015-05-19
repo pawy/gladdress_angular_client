@@ -4,7 +4,7 @@ angular.module('starterapp').factory('ContactsService', function($http, rfc4122,
 	var customers = {};
 
 	factory.findAll = function() {
-        customers = $http.get('https://gladdress.azurewebsite.net/contacts/')
+        customers = $http.get('https://gladdress.azurewebsites.net/contacts/')
             .then(function(response) {
                 return response.data;
             });
@@ -18,11 +18,11 @@ angular.module('starterapp').factory('ContactsService', function($http, rfc4122,
 	};
 
 	factory.delete = function(contact) {
-        return $http.delete('https://gladdress.azurewebsite.net/contacts/' + contact.GladId);
+        return $http.delete('https://gladdress.azurewebsites.net/contacts/' + contact.GladId);
 	};
 
-	factory.create = function(newContactData) {
-        return $http.post('https://gladdress.azurewebsite.net/contacts', {GladId:newContactData.GladId});
+	factory.create = function(gladId) {
+        return $http.post('https://gladdress.azurewebsites.net/contacts', {GladId:gladId});
 	};
 
 	return factory;

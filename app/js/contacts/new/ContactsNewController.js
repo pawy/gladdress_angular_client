@@ -7,10 +7,16 @@ angular.module('starterapp').controller('ContactsNewController', function($scope
 
 	$scope.create = function() {
         $scope.dataLoading = true;
-        ContactsService.create($scope.contact)
-            .success(function(data){
+        var gladId = $scope.contact.GladId;
+        console.log(gladId);
+        if(gladId.indexOf('http') == 0) {
+            gladId = gladId.match('http[s]?\:\/\/(www\.)?gladdress\.com\/(.*)\.html')[2];
+        }
+        console.log(gladId);
+        ContactsService.create(gladId)
+            .success(function(){
                 $rootScope.$broadcast('refreshContacts');
-                $state.go('contacts',{id: data.GladId});
+                $state.go('contacts');
             })
             .error(function(data, status){
                 $scope.dataLoading = false;
