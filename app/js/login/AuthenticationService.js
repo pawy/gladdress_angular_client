@@ -7,7 +7,7 @@ angular.module('starterapp').factory('AuthenticationService',
                 var authdata = Base64.encode(username + ':' + password);
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
 
-                $http.get('http://localhost:54331/profiles', { username: username, password: password })
+                $http.get('https://gladdress.azurewebsites.net/profiles', { username: username, password: password })
                     .success(function (response) {
                         callback(true);
                     })
