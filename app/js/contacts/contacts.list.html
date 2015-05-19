@@ -1,15 +1,18 @@
 <div class="input-group">
 	<span class="input-group-addon fa fa-search"></span>
 	<input type="text" class="form-control" placeholder="Search" ng-model="searchFilter">
+    <span class="input-group-addon" ng-if="dataLoading">
+        <i class=" fa fa-spin fa-spinner" ></i>
+    </span>
+    <span class="input-group-btn" ng-if="!dataLoading" ng-click="loadContacts()">
+        <button class="btn btn-default" type="button">
+            <i class="fa fa-refresh"></i>
+        </button>
+    </span>
 </div>
-<br />
-<button class="btn btn-default btn-block" ng-click="loadContacts()"><i class="fa fa-refresh"></i> </button>
 <ul class="nav nav-pills nav-stacked">
 	<li ng-repeat="contact in contacts | filter: searchFilter | orderBy: 'Profile.LastName'" ui-sref-active="active">
         <a ui-sref="contacts.detail({id: contact.GladId})">
-           {{contact.Profile.FirstName}} <strong>{{contact.Profile.LastName}}</strong></a>
+           <img class="img-rounded" style="height: 24px" src="{{contact.Profile.Photo}}"> {{contact.Profile.FormattedName}}</a>
     </li>
 </ul>
-<div class="text-center">
-    <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-</div>

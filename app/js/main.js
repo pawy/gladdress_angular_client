@@ -16,6 +16,8 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
 						templateUrl: '/templates/contacts/contacts.list.html'
                     },
                     'content@contacts': {
+                        templateUrl: '/templates/contacts/contacts.content.html',
+                        controller: 'ContactsListController'
                     }
 				}
 			})
@@ -37,8 +39,6 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
 				resolve: {
 					contact: function($stateParams, ContactsService) {
 						return ContactsService.findById($stateParams.id).then(function(data) {
-                            console.log('found data');
-                            console.log(data);
 							return data;
 						});
 					}
@@ -89,7 +89,6 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
         }
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-            console.log(toState.name);
             if ((toState.name === 'contacts') && !$rootScope.globals.currentUser) {
                 event.preventDefault();
                 $state.go('login');

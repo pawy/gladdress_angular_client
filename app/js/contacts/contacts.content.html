@@ -1,0 +1,12 @@
+<div class="jumbotron text-center">
+    <h1 ng-if="contacts.length > 0" class="pull-left"><i class="fa fa-chevron-circle-left" style="color:#ccc"></i></h1>
+    <div class="media">
+        <div class="media-center">
+            <img src="http://assets.gladdress.com/assets/img/logo_dark@2x.png"/>
+        </div>
+        <div class="media-body">
+            <p ng-if="contacts.length > 0">select a contact...</p>
+            <button class="btn btn-primary" ng-if="contacts.length == 0" ng-click="addContact()">Add your fist contact</button>
+        </div>
+    </div>
+</div>

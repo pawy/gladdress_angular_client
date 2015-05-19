@@ -6,7 +6,6 @@ angular.module('starterapp').factory('ContactsService', function($http, rfc4122,
 	factory.findAll = function() {
         customers = $http.get('http://localhost:54331/contacts/')
             .then(function(response) {
-                console.log(response.data);
                 return response.data;
             });
 		return customers;
@@ -14,9 +13,7 @@ angular.module('starterapp').factory('ContactsService', function($http, rfc4122,
 
 	factory.findById = function(id) {
 		return customers.then(function(data) {
-            var x = _.find(data, {GladId: id});
-            console.log(x);
-			return x;
+            return _.find(data, {GladId: id});
 		});
 	};
 

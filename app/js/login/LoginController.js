@@ -7,7 +7,6 @@ angular.module('starterapp').controller('LoginController',
                 $scope.dataLoading = true;
                 AuthenticationService.Login($scope.username, $scope.password, function(response)
                 {
-                    console.log(response);
                     if(response === true) {
                         AuthenticationService.SetCredentials($scope.username, $scope.password);
                         $state.go('contacts');

@@ -18,10 +18,7 @@ angular.module('starterapp').factory('AuthenticationService',
             };
 
             service.SetCredentials = function (username, password) {
-                console.log('ayayaya');
                 var authdata = Base64.encode(username + ':' + password);
-
-                console.log(authdata);
 
                 $rootScope.globals = {
                     currentUser: {

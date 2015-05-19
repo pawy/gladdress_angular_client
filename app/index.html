@@ -12,21 +12,21 @@
 <nav class="navbar" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Contacts</a>
+			<a class="navbar-brand" href="/"><i class="fa fa-users"></i> gladdress Contacts</a>
 		</div>
 		<ul class="nav navbar-nav">
             <li><a ui-sref="login">
                 <span ng-if="!globals.currentUser">
-                    Login
+                    <i class="fa fa-sign-in"></i> Login
                 </span>
                 <span ng-if="globals.currentUser">
-                    Logout
+                    <i class="fa fa-sign-out"></i>Logout
                 </span>
             </a></li>
 			<li><a ui-sref="about">About</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a ui-sref="contacts.new">New Contact</a></li>
+			<li><a ui-sref="contacts.new"><i class="fa fa-user-plus"></i> Add Contact</a></li>
 		</ul>
 	</div>
 </nav>
@@ -36,8 +36,6 @@
 <script src="/assets/appVendor.js"></script>
 <script src="/assets/templates.js"></script>
 <script src="/assets/app.js"></script>
-
-<script xsrc="//localhost:4000/socket.io/socket.io.js"></script>
 
 </body>
 </html>

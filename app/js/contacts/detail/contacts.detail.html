@@ -31,11 +31,8 @@
 <div class="well" ng-if="contact.note"><p class="with-linebreaks">{{contact.note}}</p></div>
 
 <div class="action-buttons">
-	<button type="button" class="btn btn-default" ng-click="new()">Add new</button>
-
 	<div class="btn-group pull-right">
-        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
-		<button type="button" class="btn btn-default" ng-click="edit()">Edit</button>
-		<button type="button" class="btn btn-default">Export</button>
+        <a class="btn btn-default" target="_blank" href="http://www.gladdress.com/{{contact.GladId}}.html"><img src="http://assets.gladdress.com/assets/img/icons/profile_light_16.png"></a>
+        <button type="button" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash"></i></button>
 	</div>
 </div>

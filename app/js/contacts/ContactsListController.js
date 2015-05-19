@@ -11,9 +11,14 @@ angular.module('starterapp').controller('ContactsListController', function($scop
         });
     };
 
+    $scope.addContact = function()
+    {
+        $state.go('contacts.new');
+    };
+
     $scope.loadContacts();
 
     $scope.$on('refreshContacts',function(){
         $scope.loadContacts();
-    })
+    });
 });
