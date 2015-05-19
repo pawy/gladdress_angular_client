@@ -1,0 +1,5 @@
+.idea
+app/vendor-bower
+node_modules
+build
+dev-build

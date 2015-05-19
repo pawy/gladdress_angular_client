@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="starterapp">
+<head lang="de">
+	<base href="/">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title ng-bind="pageTitle"></title>
+	<link rel="stylesheet" href="/assets/main.css"/>
+</head>
+<body>
+
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Contacts</a>
+		</div>
+		<ul class="nav navbar-nav">
+            <li><a ui-sref="login">
+                <span ng-if="!globals.currentUser">
+                    Login
+                </span>
+                <span ng-if="globals.currentUser">
+                    Logout
+                </span>
+            </a></li>
+			<li><a ui-sref="about">About</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a ui-sref="contacts.new">New Contact</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div ui-view></div>
+
+<script src="/assets/appVendor.js"></script>
+<script src="/assets/templates.js"></script>
+<script src="/assets/app.js"></script>
+
+<script xsrc="//localhost:4000/socket.io/socket.io.js"></script>
+
+</body>
+</html>

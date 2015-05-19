@@ -1,0 +1,41 @@
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<div class="jumbotron">
+    <div class="media">
+        <div class="media-left">
+            <img src="{{contact.Profile.Photo}}" class="img-rounded" width="150" height="150" />
+        </div>
+        <div class="media-body">
+            <h1 class="media-heading">{{contact.Profile.FormattedName}}</h1>
+            <p>{{contact.Profile.Company}}</p>
+        </div>
+    </div>
+</div>
+
+<dl class="dl-horizontal">
+	<div ng-if="contact.Profile.Email">
+		<dt>Email</dt>
+		<dd>{{contact.Profile.Email}}</dd>
+	</div>
+
+	<div ng-if="contact.Profile.phone">
+		<dt>Phone</dt>
+		<dd>{{contact.Profile.phone}}</dd>
+	</div>
+
+	<div ng-if="contact.Profile.FormattedAddress">
+		<dt>Address</dt>
+		<dd class="with-linebreaks">{{contact.Profile.FormattedAddress}}</dd>
+	</div>
+</dl>
+
+<div class="well" ng-if="contact.note"><p class="with-linebreaks">{{contact.note}}</p></div>
+
+<div class="action-buttons">
+	<button type="button" class="btn btn-default" ng-click="new()">Add new</button>
+
+	<div class="btn-group pull-right">
+        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+		<button type="button" class="btn btn-default" ng-click="edit()">Edit</button>
+		<button type="button" class="btn btn-default">Export</button>
+	</div>
+</div>
