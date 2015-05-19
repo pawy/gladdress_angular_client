@@ -16,8 +16,7 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
 						templateUrl: '/templates/contacts/contacts.list.html'
                     },
                     'content@contacts': {
-                        templateUrl: '/templates/contacts/contacts.content.html',
-                        controller: 'ContactsListController'
+                        templateUrl: '/templates/contacts/contacts.content.html'
                     }
 				}
 			})

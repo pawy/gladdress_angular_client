@@ -3,6 +3,7 @@ angular.module('starterapp').controller('ContactsListController', function($scop
     $scope.contacts = {};
 
     $scope.loadContacts = function() {
+        $scope.contacts = {};
         $scope.dataLoading = true;
         ContactsService.findAll().then(function(data) {
             $scope.contacts = data;

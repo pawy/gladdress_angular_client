@@ -16,3 +16,7 @@
            <img class="img-rounded" style="height: 24px" src="{{contact.Profile.Photo}}"> {{contact.Profile.FormattedName}}</a>
     </li>
 </ul>
+<div class="text-center" ng-if="dataLoading">
+    <br />
+    <i class=" fa fa-spin fa-spinner" ></i>
+</div>
