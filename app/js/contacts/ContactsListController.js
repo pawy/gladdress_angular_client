@@ -9,7 +9,6 @@ angular.module('starterapp').controller('ContactsListController', function($scop
     });
 
     $scope.loadContacts = function(gladId) {
-        var gladId = gladId;
         $scope.contacts = [];
         $scope.dataLoading = true;
         ContactsService.getAll(true).then(function(data) {

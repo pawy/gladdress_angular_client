@@ -14,7 +14,7 @@
 	<li ng-repeat="contact in contacts | filter: searchFilter | orderBy: 'Profile.LastName'" ui-sref-active="active">
         <a ui-sref="contacts.detail({id: contact.GladId})">
             <div ng-if="contact.Profile.Photo" class="profilephoto-thumbnail-rounded" style="background-image:url('{{::contact.Profile.Photo}}')"></div>
-            <i ng-if="!contact.Profile.Photo" class="fa fa-user fa-3x pull-right"></i>
+            <!--<i ng-if="!contact.Profile.Photo" class="fa fa-user pull-right" style="color:#eee; font-size: 56px;padding-right:5px;"></i>-->
 
             <span class="colorDark"><strong>{{::contact.Profile.FirstName}} {{::contact.Profile.LastName}}</strong></span><br />
             <i ng-if="contact.Profile.IsBusiness == 'False'" class="fa fa-home"></i>

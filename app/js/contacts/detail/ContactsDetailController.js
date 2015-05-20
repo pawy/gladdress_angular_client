@@ -1,6 +1,7 @@
 angular.module('starterapp').controller('ContactsDetailsController', function($scope, ContactsService, contact, $state, $rootScope) {
     $scope.contact = contact;
 
+
     $scope.delete = function() {
         if (confirm('Are you sure?')) {
             $scope.dataLoading = true;

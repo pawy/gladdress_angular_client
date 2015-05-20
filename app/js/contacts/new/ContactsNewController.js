@@ -8,7 +8,7 @@ angular.module('starterapp').controller('ContactsNewController', function($scope
 	$scope.create = function() {
         $scope.dataLoading = true;
         var gladId = $scope.contact.GladId;
-        if(gladId.indexOf('http') == 0) {
+        if(gladId.indexOf('http') === 0) {
             gladId = gladId.match('http[s]?\:\/\/(www\.)?gladdress\.com\/(.*)\.html')[2];
         }
         ContactsService.create(gladId)

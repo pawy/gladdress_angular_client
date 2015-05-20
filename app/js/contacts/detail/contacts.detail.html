@@ -1,25 +1,25 @@
 <div ng-show="error" class="alert alert-danger">{{::error}}</div>
 <div class="jumbotron">
     <div class="media">
-        <i ng-if="contact.Profile.IsBusiness == 'False'" class="fa fa-2x fa-home pull-left" style="position:fixed"></i>
-        <i ng-if="contact.Profile.IsBusiness == 'True'" class="fa fa-2x fa-briefcase pull-left" style="position:fixed"></i>
+        <i ng-if="contact.Profile.IsBusiness == 'False'" class="fa fa-2x fa-home pull-left colorPrimary" style="position:fixed"></i>
+        <i ng-if="contact.Profile.IsBusiness == 'True'" class="fa fa-2x fa-briefcase pull-left colorPrimary" style="position:fixed"></i>
         <div class="media-left">
             <div ng-if="contact.Profile.Photo" class="profilephoto-rounded" style="background-image:url('{{::contact.Profile.Photo}}')"></div>
-            <i ng-if="!contact.Profile.Photo" class="fa fa-user" style="font-size: 200px;"></i>
+            <i ng-if="!contact.Profile.Photo" class="fa fa-user" style="font-size: 200px;color:#ddd"></i>
         </div>
-        <div class="media-body">
+        <div class="media-body colorDark">
             <h1 class="media-heading">{{::contact.Profile.FormattedName}}</h1>
             <p>{{::contact.Profile.JobTitle}}</p>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div class="row colorDark">
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <div ng-if="contact.Profile.Email">
                 <dt><i class="fa fa-envelope"></i></dt>
-                <dd>{{::contact.Profile.Email}}</dd>
+                <dd><a href="mailto:{{::contact.Profile.Email}}">{{::contact.Profile.Email}}</a></dd>
             </div>
 
             <div ng-if="contact.Profile.Mobile">
@@ -96,7 +96,7 @@
             </div>
             <div ng-if="contact.Profile.Google">
                 <dt><i class="fa fa-google"></i></dt>
-                <dd ng-bind-html="contact.Profile.Twitter | urlFilter : true"></dd>
+                <dd ng-bind-html="contact.Profile.Google | urlFilter : true"></dd>
             </div>
             <div ng-if="contact.Profile.Skype">
                 <dt><i class="fa fa-skype"></i></dt>
@@ -110,7 +110,7 @@
     </div>
 </div>
 
-<div class="well">
+<div class="well colordark">
     <p class="with-linebreaks">
         You met <span ng-if="!contact.Profile.Gender">this person</span><span ng-if="contact.Profile.Gender == 'Male'">him</span><span ng-if="contact.Profile.Gender == 'Female'">her</span> at {{::contact.AddedDate | date}}<span ng-if="contact.GeolocationName != 'Unknown'"> in {{::contact.GeolocationName}}</span>.
     </p>
