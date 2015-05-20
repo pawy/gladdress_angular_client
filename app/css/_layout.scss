@@ -6,3 +6,51 @@ body {
 	height: 90vh;
 	overflow-y: auto;
 }
+
+.modalButton {
+  cursor: pointer;
+}
+
+.profilephoto-rounded {
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: cover;
+  padding: 15px;
+}
+
+.profilephoto-thumbnail-rounded {
+  height: 48px;
+  width: 48px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: cover;
+  display:inline-block;
+  float: right;
+}
+
+$themePrimary: #28b4b4;
+$themeDark: #373746;
+
+.colorPrimary {
+  color: $themePrimary;
+}
+
+.colorDark {
+  color: $themeDark;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: white !important;
+  background: $themePrimary;
+}
+
+footer {
+  background: $themePrimary;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}

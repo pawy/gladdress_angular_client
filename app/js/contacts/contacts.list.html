@@ -13,7 +13,15 @@
 <ul class="nav nav-pills nav-stacked">
 	<li ng-repeat="contact in contacts | filter: searchFilter | orderBy: 'Profile.LastName'" ui-sref-active="active">
         <a ui-sref="contacts.detail({id: contact.GladId})">
-           <img class="img-rounded" style="height: 24px" src="{{contact.Profile.Photo}}"> {{contact.Profile.FirstName}} <strong>{{contact.Profile.LastName}}</strong></a>
+            <div ng-if="contact.Profile.Photo" class="profilephoto-thumbnail-rounded" style="background-image:url('{{::contact.Profile.Photo}}')"></div>
+            <i ng-if="!contact.Profile.Photo" class="fa fa-user fa-3x pull-right"></i>
+
+            <span class="colorDark"><strong>{{::contact.Profile.FirstName}} {{::contact.Profile.LastName}}</strong></span><br />
+            <i ng-if="contact.Profile.IsBusiness == 'False'" class="fa fa-home"></i>
+            <i ng-if="contact.Profile.IsBusiness == 'True'" class="fa fa-briefcase"></i>
+            <small>{{::contact.Profile.City}}</small><br />
+            <small><i class="fa fa-calendar"></i> {{::contact.AddedDate | date}} <i class="fa fa-location-arrow"></i> {{::contact.GeolocationName}} </small>
+        </a>
     </li>
 </ul>
 <div class="text-center" ng-if="dataLoading">

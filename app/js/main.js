@@ -1,4 +1,4 @@
-angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages', 'uuid', 'ngCookies'])
+angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages', 'uuid', 'ngCookies', 'ngSanitize'])
 	.config(function($stateProvider, $locationProvider, $urlRouterProvider) {
 		$locationProvider.html5Mode(true);
 

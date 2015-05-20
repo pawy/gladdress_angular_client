@@ -1,12 +1,15 @@
-<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<div ng-show="error" class="alert alert-danger">{{::error}}</div>
 <div class="jumbotron">
     <div class="media">
+        <i ng-if="contact.Profile.IsBusiness == 'False'" class="fa fa-2x fa-home pull-left" style="position:fixed"></i>
+        <i ng-if="contact.Profile.IsBusiness == 'True'" class="fa fa-2x fa-briefcase pull-left" style="position:fixed"></i>
         <div class="media-left">
-            <img src="{{contact.Profile.Photo}}" class="img-rounded" width="150" height="150" />
+            <div ng-if="contact.Profile.Photo" class="profilephoto-rounded" style="background-image:url('{{::contact.Profile.Photo}}')"></div>
+            <i ng-if="!contact.Profile.Photo" class="fa fa-user" style="font-size: 200px;"></i>
         </div>
         <div class="media-body">
-            <h1 class="media-heading">{{contact.Profile.FormattedName}}</h1>
-            <p>{{contact.Profile.JobTitle}}</p>
+            <h1 class="media-heading">{{::contact.Profile.FormattedName}}</h1>
+            <p>{{::contact.Profile.JobTitle}}</p>
         </div>
     </div>
 </div>
@@ -16,25 +19,53 @@
         <dl class="dl-horizontal">
             <div ng-if="contact.Profile.Email">
                 <dt><i class="fa fa-envelope"></i></dt>
-                <dd>{{contact.Profile.Email}}</dd>
+                <dd>{{::contact.Profile.Email}}</dd>
             </div>
 
             <div ng-if="contact.Profile.Mobile">
                 <dt><i class="fa fa-mobile"></i></dt>
-                <dd>{{contact.Profile.Mobile}}</dd>
+                <dd>{{::contact.Profile.Mobile}}</dd>
             </div>
 
             <div ng-if="contact.Profile.Phone">
                 <dt><i class="fa fa-phone"></i></dt>
-                <dd>{{contact.Profile.Phone}}</dd>
+                <dd>{{::contact.Profile.Phone}}</dd>
             </div>
             <br />
             <div ng-if="contact.Profile.CompanyName">
-                <dd class="with-linebreaks">{{contact.Profile.CompanyName}}</dd>
+                <dd class="with-linebreaks"><strong>{{::contact.Profile.CompanyName}}</strong></dd>
             </div>
 
             <div ng-if="contact.Profile.FormattedAddress">
-                <dd class="with-linebreaks">{{contact.Profile.FormattedAddress}}</dd>
+                <dt><i class="fa fa-map-marker"></i></dt>
+                <dd class="with-linebreaks">
+                    <a class="modalButton" data-toggle="modal" data-href="https://www.google.com/maps/embed/v1/place?key=AIzaSyAJVilLBT0xGZc-a_Q_cfnN1s5hyf-_y_E&q={{::contact.Profile.FormattedAddress | gMapsFilter}}" data-target="#mapsModal">
+                        {{::contact.Profile.FormattedAddress}}
+                    </a>
+                </dd>
+
+                <div class="modal fade" id="mapsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="width: 75%;">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <iframe style="height: 500px; width: 100%;" frameborder="0"></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <span class="pull-left"><strong>{{::contact.Profile.CompanyName}}</strong> {{::contact.Profile.FormattedAddress}}</span>
+                                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $('a.modalButton').on('click', function(e) {
+                        var src = $(this).attr('data-href');
+                        console.log(src);
+                        $("#mapsModal iframe").attr({'src':src});
+                    });
+                </script>
+
             </div>
         </dl>
     </div>
@@ -44,46 +75,50 @@
         <dl class="dl-horizontal">
             <div ng-if="contact.Profile.Url">
                 <dt><i class="fa fa-globe"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Url}}</dd>
+                <dd ng-bind-html="contact.Profile.Url | urlFilter : true"></dd>
             </div>
             <div ng-if="contact.Profile.BirthDate">
                 <dt><i class="fa fa-gift"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.BirthDate}}</dd>
+                <dd>{{::contact.Profile.BirthDate | date}}</dd>
             </div>
 
             <div ng-if="contact.Profile.Fax">
                 <dt><i class="fa fa-fax"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Fax}}</dd>
+                <dd>{{::contact.Profile.Fax}}</dd>
             </div>
             <div ng-if="contact.Profile.Facebook">
                 <dt><i class="fa fa-facebook"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Facebook}}</dd>
+                <dd ng-bind-html="contact.Profile.Facebook | urlFilter : true"></dd>
             </div>
             <div ng-if="contact.Profile.Twitter">
                 <dt><i class="fa fa-twitter"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Twitter}}</dd>
+                <dd ng-bind-html="contact.Profile.Twitter | urlFilter : true"></dd>
             </div>
             <div ng-if="contact.Profile.Google">
                 <dt><i class="fa fa-google"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Google}}</dd>
+                <dd ng-bind-html="contact.Profile.Twitter | urlFilter : true"></dd>
             </div>
             <div ng-if="contact.Profile.Skype">
                 <dt><i class="fa fa-skype"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Skype}}</dd>
+                <dd>{{::contact.Profile.Skype}}</dd>
             </div>
             <div ng-if="contact.Profile.Yahoo">
                 <dt><i class="fa fa-yahoo"></i></dt>
-                <dd class="with-linebreaks">{{contact.Profile.Yahoo}}</dd>
+                <dd>{{::contact.Profile.Yahoo}}</dd>
             </div>
         </dl>
     </div>
 </div>
 
-<div class="well" ng-if="contact.note"><p class="with-linebreaks">{{contact.note}}</p></div>
+<div class="well">
+    <p class="with-linebreaks">
+        You met <span ng-if="!contact.Profile.Gender">this person</span><span ng-if="contact.Profile.Gender == 'Male'">him</span><span ng-if="contact.Profile.Gender == 'Female'">her</span> at {{::contact.AddedDate | date}}<span ng-if="contact.GeolocationName != 'Unknown'"> in {{::contact.GeolocationName}}</span>.
+    </p>
+</div>
 
 <div class="action-buttons">
 	<div class="btn-group pull-right">
-        <a class="btn btn-default" target="_blank" href="http://www.gladdress.com/{{contact.GladId}}.html"><img src="http://assets.gladdress.com/assets/img/icons/profile_light_16.png"></a>
+        <a class="btn btn-default" target="_blank" href="http://www.gladdress.com/{{::contact.GladId}}.html"><img src="http://assets.gladdress.com/assets/img/icons/profile_light_16.png"></a>
         <button type="button" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash"></i></button>
 	</div>
 </div>

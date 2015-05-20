@@ -5,11 +5,17 @@
 	}
 }
 
+body {
+  background: #fefefe;
+}
+
 a {
 	transition: all 0.5s ease 0s;
-
+    color: $themePrimary;
 	&:hover {
+        text-decoration: none;
 		transition: all 0.5s ease 0s;
+        color: $themeDark;
 	}
 }
 
