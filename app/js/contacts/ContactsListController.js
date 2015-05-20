@@ -1,14 +1,23 @@
 angular.module('starterapp').controller('ContactsListController', function($scope, ContactsService, $state) {
 
-    $scope.contacts = {};
+    $scope.contacts = [];
+    $scope.dataLoading = true;
 
-    $scope.loadContacts = function() {
-        $scope.contacts = {};
+    ContactsService.getAll().then(function(data) {
+        $scope.contacts = data;
+        $scope.dataLoading = false;
+    });
+
+    $scope.loadContacts = function(gladId) {
+        var gladId = gladId;
+        $scope.contacts = [];
         $scope.dataLoading = true;
-        ContactsService.findAll().then(function(data) {
+        ContactsService.getAll(true).then(function(data) {
             $scope.contacts = data;
             $scope.dataLoading = false;
-            $state.go('contacts');
+            if(gladId) {
+                $state.go('contacts.detail',{id: gladId});
+            }
         });
     };
 
@@ -19,7 +28,7 @@ angular.module('starterapp').controller('ContactsListController', function($scop
 
     $scope.loadContacts();
 
-    $scope.$on('refreshContacts',function(){
-        $scope.loadContacts();
+    $scope.$on('refreshContacts',function(e, gladId){
+        $scope.loadContacts(gladId);
     });
 });

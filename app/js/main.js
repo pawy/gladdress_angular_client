@@ -37,7 +37,7 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
 
 				resolve: {
 					contact: function($stateParams, ContactsService) {
-						return ContactsService.findById($stateParams.id).then(function(data) {
+						return ContactsService.getById($stateParams.id).then(function(data) {
 							return data;
 						});
 					}
