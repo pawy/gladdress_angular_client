@@ -88,7 +88,7 @@ angular.module('starterapp', ['templates', 'ui.router', 'ngAnimate', 'ngMessages
         }
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-            if (toState.name !== 'login' && !$rootScope.globals.currentUser) {
+            if (toState.name !== 'login' && toState.name !== 'about' && !$rootScope.globals.currentUser) {
                 event.preventDefault();
                 $state.go('login');
             }
