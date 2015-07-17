@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="starterapp">
+<head lang="de">
+	<base href="/">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title ng-bind="pageTitle"></title>
+	<link rel="stylesheet" href="/assets/main.css"/>
+</head>
+<body>
+
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/"><i class="fa fa-users"></i> gladdress Contacts</a>
+		</div>
+		<ul class="nav navbar-nav">
+            <li><a ui-sref="login">
+                <span ng-if="!globals.currentUser">
+                    <i class="fa fa-sign-in"></i> Login
+                </span>
+                <span ng-if="globals.currentUser">
+                    <i class="fa fa-sign-out"></i>Logout
+                </span>
+            </a></li>
+			<li><a ui-sref="about">About</a></li>
+            <li><a href="https://gladdress.com/Personal/EditUserData"><i class="fa fa-pencil-square"></i> My Data</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="inverted"><a ui-sref="contacts.new"><i class="fa fa-user-plus"></i> Add Contact</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div ui-view></div>
+
+<footer class="text-center" style="padding: 10px;">
+    <a target="_blank" href="http://www.gladdress.com"><img height="24px" src="http://assets.gladdress.com/assets/img/logo_dark.png" /> www.gladdress.com</a>
+</footer>
+
+<script src="/assets/appVendor.js"></script>
+<script src="/assets/templates.js"></script>
+<script src="/assets/app.js"></script>
+
+</body>
+</html>
