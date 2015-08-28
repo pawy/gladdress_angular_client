@@ -112,7 +112,10 @@
 
 <div class="well colordark">
     <p class="with-linebreaks">
-        You met <span ng-if="!contact.Profile.Gender">this person</span><span ng-if="contact.Profile.Gender == 'Male'">him</span><span ng-if="contact.Profile.Gender == 'Female'">her</span> at {{::contact.AddedDate | date}}<span ng-if="contact.GeolocationName != 'Unknown'"> in {{::contact.GeolocationName}}</span>.
+        You met <span ng-if="!contact.Profile.Gender">this person</span><span ng-if="contact.Profile.Gender == 'Male'">him</span><span ng-if="contact.Profile.Gender == 'Female'">her</span> at {{::contact.AddedDate | date}} <span ng-if="contact.GeolocationName != 'Unknown'"> in {{::contact.GeolocationName}}</span>.
+    </p>
+    <p data-ng-if=\"contact.Profile.IsDeleted == \'True\'\">
+    	This glad-card has been deleted and will no longer receive automatic updates.
     </p>
 </div>
 
